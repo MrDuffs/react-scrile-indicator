@@ -1,15 +1,23 @@
 import { memo } from 'react';
-import TargetBlock from '../target-block';
 import './style.scss';
 
-function ProgressBar(props) {
+function ProgressBar({ currentTargetValue, progress, finalTarget }) {
   return (
     <div className="progress-bar">
       <div className="progress-bar__outer">
-        <div className="progress-bar__inner" />
-        <span className="progress-bar__tooltip">$14</span>
+        <div
+          className="progress-bar__inner"
+          style={{ width: `${progress}%` }}
+        />
+        {currentTargetValue !== finalTarget && (
+          <span
+            className="progress-bar__tooltip"
+            style={{ left: `${progress}%` }}
+          >
+            ${currentTargetValue}
+          </span>
+        )}
       </div>
-      <TargetBlock />
     </div>
   );
 }

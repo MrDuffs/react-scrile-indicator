@@ -4,6 +4,7 @@
 }
 
 .progress-bar__outer {
+  padding: 0 4px;
   height: 15px;
   width: 130px;
   display: flex;
@@ -13,7 +14,7 @@
 }
 
 .progress-bar__inner {
-  margin: 0 3px;
+  //margin: 0 4px;
   height: 10px;
   width: 100%;
   background: #1c99c5;
@@ -26,10 +27,11 @@
   color: grey;
   text-align: center;
   pointer-events: none;
-  transform: translateX(-35%);
+  transform: translateX(-70%);
   white-space: nowrap;
   position: absolute;
   top: 25px;
+  transition: left 100ms ease-out;
 
   &:after {
     content: '';
