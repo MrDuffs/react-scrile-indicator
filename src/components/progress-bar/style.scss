@@ -1,0 +1,43 @@
+.progress-bar {
+  display: flex;
+  align-items: center;
+}
+
+.progress-bar__outer {
+  height: 15px;
+  width: 130px;
+  display: flex;
+  align-items: center;
+  background: #d5d5d5;
+  position: relative;
+}
+
+.progress-bar__inner {
+  margin: 0 3px;
+  height: 10px;
+  width: 100%;
+  background: #1c99c5;
+  transition: width 100ms ease-out;
+}
+
+.progress-bar__tooltip {
+  font-size: 14px;
+  font-weight: bold;
+  color: grey;
+  text-align: center;
+  pointer-events: none;
+  transform: translateX(-35%);
+  white-space: nowrap;
+  position: absolute;
+  top: 25px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: calc(50% - 5px);
+    border-bottom: 6px solid grey;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  }
+}

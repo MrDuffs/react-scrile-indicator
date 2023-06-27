@@ -1,0 +1,12 @@
+.target-indicator-progress {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  .target-indicator-progress__description {
+    font-size: 14px;
+    font-weight: bold;
+    color: grey;
+  }
+}

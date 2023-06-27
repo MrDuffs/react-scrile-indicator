@@ -1,0 +1,17 @@
+.target-indicator-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.target-indicator-info__img {
+  width: 20px;
+  height: 20px;
+}
+
+.target-indicator-info__text {
+  font-size: 14px;
+  color: grey;
+}
