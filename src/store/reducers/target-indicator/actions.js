@@ -16,7 +16,7 @@ export const loadIndicatorValues = () => {
         payload: data.balance_usd,
       });
     } catch (e) {
-      dispatch({ type: 'GET_INITIAL_VALUE_ERROR', error: e });
+      dispatch({ type: 'GET_INITIAL_VALUE_ERROR', payload: e });
     }
   };
 };
