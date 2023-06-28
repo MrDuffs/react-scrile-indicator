@@ -18,7 +18,6 @@ function TargetBlock({ currentTargetValue, finalTarget }) {
     >
       <div className="target-block__title">Target</div>
       <div className="target-block__divider" />
-      { /* <div className="target-block__divider_mask" /> */ }
       <div className="target-block__goal">${finalTarget}</div>
     </div>
   );
