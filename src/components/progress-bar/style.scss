@@ -6,7 +6,7 @@
 .progress-bar__outer {
   padding: 0 4px;
   height: 15px;
-  width: 130px;
+  width: 134px;
   display: flex;
   align-items: center;
   background: #d5d5d5;
@@ -14,15 +14,15 @@
 }
 
 .progress-bar__inner {
-  //margin: 0 4px;
-  height: 10px;
+  height: 9px;
   width: 100%;
   background: #1c99c5;
   transition: width 100ms ease-out;
 }
 
 .progress-bar__tooltip {
-  font-size: 14px;
+  font-size: 13px;
+  letter-spacing: -0.2px;
   font-weight: bold;
   color: grey;
   text-align: center;
