@@ -1,54 +1,52 @@
 import {
-  memo, useEffect, useLayoutEffect, useState,
+  memo, useEffect, useState,
 } from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
 import ContentLayout from '../../components/content-layout';
 import TargetIndicatorInfo from '../../components/target-indicator-info';
 import TargetIndicatorProgress from '../../components/target-indicator-progress';
 import { calculateProgress } from '../../utils/calculate-progress';
 
 function TargetIndicatorContent() {
-  const initialValue = 14;
-  const finalTarget = 15;
+  const select = useSelector((state) => ({
+    initialValue: state.indicatorValues.initialValue,
+    finalTarget: state.indicatorValues.finalTarget,
+  }), shallowEqual);
+
   const [currentValue, setCurrentValue] = useState(0);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (currentValue < initialValue) {
+    if (currentValue < select.initialValue) {
       setTimeout(() => {
         setCurrentValue((prev) => prev + 1);
       }, 50);
     }
-  }, [currentValue]);
-
-  useLayoutEffect(() => {
-    setProgress(() => calculateProgress(currentValue, finalTarget));
-  }, [currentValue]);
+  }, [select.initialValue, currentValue]);
 
   useEffect(() => {
-    if (currentValue >= initialValue && currentValue < finalTarget) {
+    setProgress(() => calculateProgress(currentValue, select.finalTarget));
+  }, [select.finalTarget, currentValue]);
+
+  useEffect(() => {
+    if (select.initialValue && select.finalTarget && currentValue >= select.initialValue && currentValue < select.finalTarget) {
       setTimeout(() => {
         setCurrentValue((prev) => +(prev + 0.2).toFixed(1));
       }, 2000);
     }
-  }, [currentValue]);
-
-  // const callbacks = {
-  //   onProgress: useCallback(() => {
-  //     progress < finalTarget ? setProgress((prev) => prev + 0.2) : setProgress(0);
-  //   }, [progress]),
-  // };
+  }, [select.initialValue, select.finalTarget, currentValue]);
 
   return (
     <ContentLayout>
       <TargetIndicatorProgress
         currentTargetValue={currentValue}
         progress={progress}
-        finalTarget={finalTarget}
+        finalTarget={select.finalTarget}
       />
-      {currentValue !== finalTarget && (
+      {currentValue !== select.finalTarget && (
         <TargetIndicatorInfo
           currentTargetValue={currentValue}
-          finalTarget={finalTarget}
+          finalTarget={select.finalTarget}
         />
       )}
     </ContentLayout>
